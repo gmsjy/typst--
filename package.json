@@ -1,8 +1,11 @@
 {
-  "name": "typst--",
+  "name": "typstf",
   "displayName": "typst++",
   "description": "Export Inline Formula to SVG",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publisher": "msjy",
+  "repository": "https://github.com/gmsjy/typst--",
+  "icon": "icon/typstf.png",
   "engines": {
     "vscode": "^1.102.0"
   },
@@ -13,10 +16,6 @@
   "main": "./extension.js",
   "contributes": {
     "commands": [
-      {
-        "command": "typst--.helloWorld",
-        "title": "Hello World"
-      },
       {
         "command": "typst--.svg-export",
         "title": "TypstSvgExport"
