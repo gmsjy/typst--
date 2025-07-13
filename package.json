@@ -1,8 +1,8 @@
 {
   "name": "typstf",
-  "displayName": "typst++",
+  "displayName": "typstf",
   "description": "Export Inline Formula to SVG",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "msjy",
   "repository": "https://github.com/gmsjy/typst--",
   "icon": "icon/typstf.png",
