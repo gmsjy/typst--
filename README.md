@@ -1,14 +1,16 @@
-# typst-- README
+# typstf README
 
-This is the README for "typst--". 
+This is the README for "typstf". 
 
 ## Features
 
 Export the formula to SVG format
 
+![](./images/demo.gif)
+
 ## Requirements
 
-Install the Typst
+Install the Typst, add the "typstf" extension.
 
 ## Extension Settings
 
@@ -27,7 +29,6 @@ Choose it ,menu to start
 
 ## For more information
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+* [typstf](https://marketplace.visualstudio.com/items?itemName=msjy.typstf)
 
 **Enjoy!**

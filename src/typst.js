@@ -1,7 +1,7 @@
-const fs   = require('fs');
+const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const os   = require('os');
+const os = require('os');
 
 /**
  * 输入：完整的行内公式字符串，例如 "$E=mc^2$"

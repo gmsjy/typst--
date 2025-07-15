@@ -2,8 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 const { renderTypstToSVG } = require('./src/typst');
-const path   = require('path');
-const fs     = require('fs');
+const path = require('path');
+const fs = require('fs');
 const crypto = require('crypto');
 
 
@@ -11,8 +11,8 @@ function findInlineFormula(document, position) {
     const line = document.lineAt(position).text;
     let start = line.lastIndexOf('$', position.character);
     if (start === -1) return null;
-    let end   = line.indexOf('$', start + 1);
-    if (end   === -1) return null;
+    let end = line.indexOf('$', start + 1);
+    if (end === -1) return null;
     return line.slice(start, end + 1);
 }
 
@@ -24,7 +24,7 @@ function findInlineFormula(document, position) {
  */
 function activate(context) {
 
-	const cmd = vscode.commands.registerCommand(
+    const cmd = vscode.commands.registerCommand(
         'typst--.svg-export',
         () => {
             const editor = vscode.window.activeTextEditor;
@@ -34,14 +34,14 @@ function activate(context) {
             let formula;
             if (!editor.selection.isEmpty) {
                 formula = doc.getText(editor.selection);
-				formula = `#set page(width: auto, height: auto, margin: 0pt,fill: none)
+                formula = `#set page(width: auto, height: auto, margin: 0pt,fill: none)
 				#show math.equation: set text(top-edge: "bounds", bottom-edge: "bounds")
-				`+formula ;
+				`+ formula;
             } else {
                 formula = findInlineFormula(doc, editor.selection.start);
-				formula = formula = `#set page(width: auto, height: auto, margin: 0pt,fill: none)
+                formula = formula = `#set page(width: auto, height: auto, margin: 0pt,fill: none)
 				#show math.equation: set text(top-edge: "bounds", bottom-edge: "bounds")
-				`+formula ;
+				`+ formula;
             }
             if (!formula || !formula.trim()) {
                 vscode.window.showErrorMessage('未找到行内公式');
@@ -50,10 +50,11 @@ function activate(context) {
 
             try {
                 const svg = renderTypstToSVG(formula);
+
                 const hash = crypto.createHash('sha256')
-                                   .update(formula)
-                                   .digest('hex')
-                                   .slice(0, 8);
+                    .update(formula)
+                    .digest('hex')
+                    .slice(0, 8);
                 const ws = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
                 const outDir = path.join(ws || '.', 'typst-export');
                 if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
@@ -70,9 +71,9 @@ function activate(context) {
 }
 
 // This method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
-	activate,
-	deactivate
+    activate,
+    deactivate
 }
