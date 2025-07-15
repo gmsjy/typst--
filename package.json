@@ -2,7 +2,7 @@
   "name": "typstf",
   "displayName": "typstf",
   "description": "Export Inline Formula to SVG",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "msjy",
   "repository": "https://github.com/gmsjy/typst--",
   "icon": "icon/typstf.png",

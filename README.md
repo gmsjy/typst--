@@ -6,7 +6,7 @@ This is the README for "typstf".
 
 Export the formula to SVG format
 
-![](./images/demo.gif)
+![](https://github.com/gmsjy/typst--/blob/master/images/demo.gif)
 
 ## Requirements
 
