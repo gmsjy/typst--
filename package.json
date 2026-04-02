@@ -2,7 +2,7 @@
   "name": "typstf",
   "displayName": "typstf",
   "description": "Export Inline Formula to SVG",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "msjy",
   "repository": "https://github.com/gmsjy/typst--",
   "icon": "icon/typstf.png",
@@ -19,6 +19,10 @@
       {
         "command": "typst--.svg-export",
         "title": "TypstSvgExport"
+      },
+      {
+        "command": "typst--.export-markdown",
+        "title": "TypstToMarkdown"
       }
     ],
     "menus": {
@@ -27,6 +31,11 @@
           "command": "typst--.svg-export",
           "when": "editorLangId == typst",
           "group": "1_modification@1"
+        },
+        {
+          "command": "typst--.export-markdown",
+          "when": "editorLangId == typst",
+          "group": "1_modification@2"
         }
       ]
     }

@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
-const { renderTypstToSVG } = require('./src/typst');
+const { renderTypstToSVG, convertTypstToMarkdown } = require('./src/typst');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
@@ -67,6 +67,33 @@ function activate(context) {
         }
     );
     context.subscriptions.push(cmd);
+
+    const exportMarkdownCmd = vscode.commands.registerCommand(
+        'typst--.export-markdown',
+        () => {
+            const editor = vscode.window.activeTextEditor;
+            if (!editor) {
+                vscode.window.showErrorMessage('没有打开的活动编辑器');
+                return;
+            }
+
+            const doc = editor.document;
+            const typstContent = doc.getText();
+
+            try {
+                const markdownContent = convertTypstToMarkdown(typstContent);
+
+                const typstPath = doc.uri.fsPath;
+                const mdPath = typstPath.replace(/\.typ$/i, '.md');
+
+                fs.writeFileSync(mdPath, markdownContent, 'utf8');
+                vscode.window.showInformationMessage(`已导出 Markdown 文件：${mdPath}`);
+            } catch (err) {
+                vscode.window.showErrorMessage('导出失败：' + err.message);
+            }
+        }
+    );
+    context.subscriptions.push(exportMarkdownCmd);
 
 }
 
